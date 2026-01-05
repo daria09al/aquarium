@@ -1,0 +1,750 @@
+:root {
+  --panel-bg: #000000;
+  --text: #e5e7eb;
+
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    sans-serif;
+  background: radial-gradient(circle at top, #111827, #020617);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-title {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-size: 28px;
+  text-align: center;
+  text-shadow: 0 0 16px rgba(15, 23, 42, 0.8);
+}
+
+/* night */
+
+body.night .aquarium {
+  filter: brightness(0.65);
+}
+
+body.lights-off .aquarium {
+  filter: brightness(0.3) contrast(1.1);
+}
+
+/* bottom menu  */
+
+.menu-toggle {
+  position: absolute;
+  left: 18px;
+  top: 14px;
+  z-index: 30;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: linear-gradient(to right, #0b7ac0);
+  color: #f9fafb;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(18, 34, 103, 0.6);
+}
+
+/* Обёртка аквариума */
+
+.aquarium-wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 10px 16px 18px;
+}
+
+.aquarium {
+  position: relative;
+  width: 100%;
+  max-width: 2200px;
+  height: calc(100% - 10px);
+  min-height: 420px;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 2px solid rgba(148, 163, 184, 0.7);
+  box-shadow: 0 30px 50px rgba(15, 23, 42, 0.9);
+  background: #343a54;
+}
+
+.water {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 0%, #78bad6 0%, #7eb3cb 30%, #0f172a 95%);
+  opacity: 0.98;
+}
+
+.water-dirt {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+
+/* Dekaration */
+
+.decor {
+  position: absolute;
+  bottom: 0;
+}
+
+.sand {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to top, #facc15, #fbbf24);
+}
+
+
+/* Нагреватель (термометр условный) */
+
+.heater {
+  position: absolute;
+  right: 30px;
+  top: 230px;
+  width: 17px;
+  height: 600px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #790505, #000000);
+  box-shadow: 0 0 8px rgba(5, 9, 21, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 8px;
+}
+
+.heater-bulb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 6px #ffffff;
+  opacity: 0.4;
+}
+
+.heater.active .heater-bulb {
+  background: #f97316;
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.95);
+  opacity: 1;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+  width: 200px;
+}
+
+option {
+  padding: 0;
+}
+
+input[type="range"] {
+  width: 200px;
+  margin: 0;
+}
+
+/* Filter */
+
+.filter {
+  position: absolute;
+  left: 26px;
+  top: 70px;
+  width: 30px;
+  height: 840px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #0D1747);
+  box-shadow: 0 0 10px rgba(15, 23, 42, 0.9);
+  overflow: hidden;
+}
+
+.filter-top {
+  height: 26px;
+  background: linear-gradient(to bottom, #f1f1f1, #070e7a);
+}
+
+.filter-bubbles {
+  position: absolute;
+  left: 50%;
+  top: 67px;
+  width: 10px;
+  height: 700px;
+  transform: translateX(-50%);
+  background-image: radial-gradient(circle, rgba(248, 250, 252, 0.8) 2px, transparent 3px);
+  background-size: 8px 12px;
+  background-position: 0 0;
+  opacity: 0;
+}
+
+.filter.active .filter-bubbles {
+  opacity: 0.8;
+  animation: filter-bubble-move 20s linear infinite;
+}
+
+@keyframes filter-bubble-move {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: -24px;
+  }
+}
+
+
+ /* Fish*/
+
+/* Все рыбы плывут слева → направо */
+.fish {
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  animation: swim-right 20s linear infinite;
+}
+
+.fish1 {
+  width: 100px;
+  height: 70px;
+  position: absolute;
+  animation: swim-left 40s linear infinite;
+}
+
+.fish2 {
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  animation: swim-left 35s linear infinite;
+}
+
+.fish3 {
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  animation: swim-left 25s linear infinite;
+}
+
+.fish4 {
+  width: 20px;
+  height: 10px;
+  position: absolute;
+  animation: swim-left 45s linear infinite;
+}
+
+/* Анимация слева → направо */
+@keyframes swim-right {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(110vw);
+  }
+}
+.fish-left {
+  position: absolute;
+  width: 150px;
+  height: 100px;
+  animation: swim-left 20s linear infinite;
+}
+
+/* справа → налево */
+@keyframes swim-left {
+  0% {
+    transform: translateX(120vw) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-220px) scaleX(-1);
+  }
+}
+
+
+/* Тело рыбы */
+.fish-body {
+  position: relative;
+  background-color: orange;
+  border-radius: 50%;
+  width: 150px;
+  height: 100px;
+}
+
+.fish1-body {
+  position: relative;
+  background-color: rgb(220, 13, 158);
+  border-radius: 50%;
+  width: 150px;
+  height: 100px;
+}
+
+.fish-body2 {
+  position: relative;
+  background-color: rgb(196, 220, 13);
+  border-radius: 50%;
+  width: 150px;
+  height: 100px;
+}
+
+.fish-body3 {
+  position: relative;
+  background-color: #536BCA;
+  border-radius: 50%;
+  width: 150px;
+  height: 100px;
+}
+
+.fish-body4 {
+  position: relative;
+  background-color: #cbcb32;
+  border-radius: 50%;
+  width: 150px;
+  height: 100px;
+}
+/* Глаз */
+.eye {
+  position: absolute;
+  left: 100px;
+  top: 20px;
+  background-color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.pupil {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+/* Плавники */
+
+.fin {
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  background-color: orange;
+  border-radius: 50%;
+  transform: rotate(40deg);
+  width: 80px;
+  height: 50px;
+}
+
+
+.fin1 {
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  background-color: rgb(220, 13, 158);
+  border-radius: 50%;
+  transform: rotate(40deg);
+  width: 80px;
+  height: 50px;
+}
+
+.fin2 {
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  background-color: rgb(196, 220, 13);
+  border-radius: 50%;
+  transform: rotate(40deg);
+  width: 80px;
+  height: 50px;
+}
+
+.fin3{
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  background-color: #536BCA;
+  border-radius: 50%;
+  transform: rotate(40deg);
+  width: 80px;
+  height: 50px;
+}
+
+.fin4{
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  background-color: #cbcb32;
+  border-radius: 50%;
+  transform: rotate(40deg);
+  width: 80px;
+  height: 50px;
+}
+
+.fin-bottom1 {
+  top: 60px;
+  transform: rotate(-40deg);
+  background-color: rgb(220, 13, 158);
+}
+
+.fin-bottom2 {
+  top: 60px;
+  transform: rotate(-40deg);
+  background-color: rgb(196, 220, 13);
+}
+
+.fin-bottom {
+  top: 60px;
+  transform: rotate(-40deg);
+}
+
+.fin-bottom3 {
+  top: 60px;
+  transform: rotate(-40deg);
+  background-color: #536BCA;
+}
+
+.fin-bottom4 {
+  top: 40px;
+  transform: rotate(-40deg);
+  background-color: #cbcb32;
+}
+
+/* Пузырьки */
+
+#bubbles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(248, 250, 252, 0.2);
+  animation: bubble-rise 70s linear infinite;
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) scale(1.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-960px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* Частицы корма */
+
+.food {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 60%;
+  background: #facc15;
+  box-shadow: 0 0 4px rgba(250, 204, 21, 0.85);
+  animation: food-fall 6s linear forwards;
+}
+
+@keyframes food-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(340px);
+    opacity: 0;
+  }
+}
+
+/* Боковая панель */
+
+.side-panel-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 26, 39, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 35;
+}
+
+.side-panel-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.side-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 310px;
+  max-width: 80vw;
+  height: 100%;
+  background: var(--panel-bg);
+  box-shadow: 12px 0 30px rgba(69, 83, 117, 0.9);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+  z-index: 40;
+}
+
+.side-panel.open {
+  transform: translateX(0);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.close-panel-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: #111827;
+  color: #e5e7eb;
+  cursor: pointer;
+}
+
+/* Секции панели */
+
+.panel-section {
+  border-radius: 16px;
+  padding: 10px 12px;
+  background: rgba(3, 19, 53, 0.96);
+  border: 1px solid rgba(34, 30, 54, 0.7);
+  font-size: 14px;
+}
+
+.panel-section h2 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.panel-section h3 {
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.panel-section p {
+  margin-bottom: 4px;
+  color: var(--muted);
+}
+
+.small-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Кнопки и формы */
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border-radius: 1000px;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 4px;
+  cursor: pointer;
+  background: linear-gradient(to right, #033247, #24255c);
+  color: #f9fafb;
+  font-size: 13px;
+  box-shadow: 0 10px 22px rgba(34, 90, 210, 0.45);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(27, 6, 92, 0.7);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+/* спец-кнопки */
+
+.mode-buttons {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.mode-dn {
+  padding-inline: 10px;
+  font-size: 12px;
+}
+
+.light-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.light-btn {
+  padding-inline: 10px;
+  font-size: 12px;
+  font-size: 23px;
+}
+
+#feeding-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+#feeding-form input[type="time"] {
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(23, 38, 60, 0.8);
+  background: #020617;
+  color: var(--text);
+}
+
+#feeding-times-list {
+  list-style: none;
+  margin-top: 4px;
+  max-height: 130px;
+  overflow-y: auto;
+}
+
+#feeding-times-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background: rgba(38, 48, 74, 0.96);
+  border: 1px solid rgba(43, 82, 144, 0.6);
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.remove-time-btn {
+  padding: 2px 8px;
+  font-size: 11px;
+  box-shadow: none;
+}
+
+/* Адаптив */
+
+@media (max-width: 600px) {
+  .app-title {
+    font-size: 22px;
+    margin-top: 12px;
+  }
+
+  .aquarium-wrapper {
+    padding-inline: 6px;
+  }
+
+  .aquarium {
+    border-radius: 22
+  }
+}
+.seaweed {
+  position: absolute;
+  bottom: 100px;
+  width: 300px;
+  height: 500px;
+  opacity: 10;
+  animation: seaweed-move 20s ease-in-out infinite;
+}
+
+.seaweed-left {
+  left: 170px;
+}
+.seaweed-left1 {
+  left: 500px;
+}
+
+.seaweed-right {
+  right: 180px;
+}
+.seaweed-right1 {
+  right: 500px;
+}
+
+@keyframes seaweed-move {
+  0%   { transform: rotate(0.5deg); }
+  50%  { transform: rotate(0deg); }
+  100% { transform: rotate(0.5deg); }
+}
+ .castle{
+  position: absolute;
+  bottom: -50px;
+  width: auto;
+  height: 700px;
+  opacity: 10;
+  left: 760px;
+ }
+.seaweed1 {
+  position: absolute;
+  bottom: 10px;
+  width: auto;
+  height: 400px;
+  opacity: 1;
+  left: 305px;
+
+}
+
+.seaweed2 {
+  position: absolute;
+  bottom: 10px;
+  width: auto;
+  height: 400px;
+  opacity: 1;
+  right: 260px;
+
+
+}
+.knight{
+  position: absolute;
+  bottom: 70px;
+  width: auto;
+  height: 200px;
+  opacity: 1;
+  left: 880px;
+}
+.umbrella{
+  position: absolute;
+  bottom: 100px;
+  width: auto;
+  height: 300px;
+  opacity: 1;
+  left: 700px;
+}

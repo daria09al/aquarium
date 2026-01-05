@@ -1,0 +1,74 @@
+/* Font Class */
+.caveat-brush-regular {
+    font-family: "Caveat Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Background Video */
+#video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Top Title */
+.top-title {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    text-shadow: 0 0 10px black;
+}
+
+/* Center Button */
+.center-button {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 40px;
+    font-size: 26px;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 30px;
+    text-decoration: none;
+    backdrop-filter: blur(3px);
+    transition: 0.3s ease;
+}
+
+.center-button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+
+/* Bottom Block with Lines + Name*/
+.bottom-block {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Line */
+.line {
+    width: 180px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 6px auto;
+    border-radius: 10px;
+}
+
+/* Name */
+.bottom-name {
+    font-size: 28px;
+    color: white;
+    text-shadow: 0 0 10px black;
+}

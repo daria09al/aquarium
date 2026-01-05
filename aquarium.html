@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Aquarium</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <button class="menu-toggle" id="menu-toggle">🪸</button>
+
+  <h1 class="app-title">My Aquarium</h1>
+
+  <div class="aquarium-wrapper">
+    <div class="aquarium" id="aquarium">
+      <div class="water"></div>
+
+
+      <div class="water-dirt" id="water-dirt"></div>
+
+
+      <div id="fish-container">
+
+
+  <div class="fish1" style="top: 400px; animation-delay: 0s;">
+    <div class="fish1-body">
+      <div class="eye"><div class="pupil"></div></div>
+    </div>
+    <div class="fin1"></div>
+    <div class="fin fin-bottom1"></div>
+  </div>
+
+  <div class="fish" style="top: 250px; animation-delay: 0s;">
+    <div class="fish-body">
+      <div class="eye"><div class="pupil"></div></div>
+    </div>
+    <div class="fin"></div>
+    <div class="fin fin-bottom"></div>
+  </div>
+
+
+
+  <div class="fish2" style="top: 100px; animation-delay: 0s;">
+    <div class="fish-body2">
+      <div class="eye"><div class="pupil"></div></div>
+    </div>
+    <div class="fin2"></div>
+    <div class="fin fin-bottom2"></div>
+  </div>
+
+
+
+  <div class="fish3" style="top: 550px; animation-delay: 0s;">
+    <div class="fish-body3">
+      <div class="eye"><div class="pupil"></div></div>
+    </div>
+    <div class="fin3"></div>
+    <div class="fin fin-bottom3"></div>
+  </div>
+
+
+
+  <div class="fish4" style="top: 750px; animation-delay: 0s;">
+    <div class="fish-body4">
+      <div class="eye"><div class="pupil"></div></div>
+    </div>
+    <div class="fin4"></div>
+    <div class="fin fin-bottom4"></div>
+  </div>
+ 
+
+
+      <div id="bubbles-container"></div>
+
+      <div class="heater" id="heater-icon">
+        <div class="heater-bulb"></div>
+      </div>
+
+      <div class="filter" id="filter-icon">
+        <div class="filter-top"></div>
+        <div class="filter-bubbles"></div>
+      </div>
+
+      <div class="decor sand"></div>
+    </div>
+  </div>
+
+
+  <img class="seaweed seaweed-left" src="seaweed2.png" alt="seaweed">
+<img class="seaweed seaweed-right" src="seaweed2.png" alt="seaweed">
+<img class="seaweed seaweed-left1" src="seaweed2.png" alt="seaweed">
+<img class="seaweed seaweed-right1" src="seaweed2.png" alt="seaweed">
+<img  class="castle" src="castle_cropped.png" alt="castle">
+<img  class="seaweed1" src="foto1.png" alt="seaweed">
+<img  class="seaweed2" src="foto1.png" alt="seaweed">
+<img class="knight"  src="knight .png" alt="knight ">
+<img  class="umbrella" src="umbrella.png" alt="umbrella">
+
+
+
+  <div class="side-panel-backdrop" id="side-panel-backdrop"></div>
+
+  <aside class="side-panel" id="side-panel">
+
+    <div class="panel-header">
+      <span>Aquarium Control Hub</span>
+      <button id="close-panel-btn" class="close-panel-btn">✕</button>
+    </div>
+
+    <section class="panel-section">
+      <h2>Light & Ambience</h2>
+
+      <p>Mode: <span id="day-night-label">Day</span></p>
+      <div class="mode-buttons">
+        <button class="mode-dn" data-mode="day">Day</button>
+        <button class="mode-dn" data-mode="night">Night</button>
+      </div>
+
+      <p>Lights: <span id="light-status">On</span></p>
+      <button id="toggle-light-btn">Turn Lights Off</button>
+
+
+      <p class="small-label">Simulation Time: <span id="time-display">--:--</span></p>
+    </section>
+
+    <section class="panel-section">
+      <h2>Water Conditions</h2>
+      <p>Temperature: <span id="temp-value">24</span> °C</p>
+      <p>Heater: <span id="heater-status">Off</span></p>
+
+          <p>
+        <label for="temp1">Temperature </label>
+        <input type="range" id="temp1" name="temp1" min="22" max="28" step="0.1" value="22" />
+        </p>
+
+      <datalist id="values">
+        <option label="22"></option>
+        <option label="23"></option>
+        <option label="24"></option>
+        <option label="25"></option>
+        <option label="26"></option>
+        <option label="27"></option>
+        <option label="28"></option>
+          </datalist>
+
+
+    </section>
+
+    <section class="panel-section">
+      <h2>Tank Cleanliness</h2>
+      <p>Cleanliness: <span id="cleanliness-value">100</span>%</p>
+      <p>Filter: <span id="filter-status">Off</span></p>
+    </section>
+
+    <section class="panel-section">
+      <h2>Feeding System</h2>
+
+      <button id="feed-button">Feed Fish</button>
+      <p>Last Feeding: <span id="last-fed-label">—</span></p>
+
+      <h3>Auto-Feeding</h3>
+
+      <form id="feeding-form">
+        <label>
+          Time (HH:MM):
+          <input id="feeding-time-input" type="time" required />
+        </label>
+        <button type="submit">Add Time</button>
+      </form>
+
+      <ul id="feeding-times-list"></ul>
+
+    </section>
+
+  </aside>
+
+
+  <script src="main.js"></script>
+</body>
+</html>
